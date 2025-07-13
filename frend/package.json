@@ -2,7 +2,7 @@
   "name": "frend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://jnanapravallikailla.github.io/ecommerce",
+  "homepage": "https://ecommerce-gjx4.vercel.app",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
