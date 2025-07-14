@@ -1,4 +1,4 @@
-let bcrypt=require("bcrypt")
+let bcrypt=require("bcryptjs")
 let jwt=require("jsonwebtoken")
 const nodemailer = require("nodemailer");
 const um = require("../models/usermodel");
