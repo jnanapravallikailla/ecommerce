@@ -3,7 +3,7 @@ import Ct from "./Ct"
 import axios from "axios"
 import Cookies from "js-cookie"
 import { useNavigate } from "react-router-dom"
-
+const API = "https://ecommerce-production-b6e8.up.railway.app"
 const Cart = () => {
   const [data, setData] = useState([])
   const [f, setF] = useState(false)
@@ -16,7 +16,7 @@ const Cart = () => {
     if (x !== undefined) {
       x = JSON.parse(x)
       obj.stateupd(x)
-      axios.get(`http://localhost:5000/getcart/${x.uid}`).then((res) => {
+      axios.get(`${API}/getcart/${x.uid}`).then((res) => {
         let t = 0
         for (let cobj of res.data) {
           t += cobj.qty * cobj.price
@@ -30,14 +30,14 @@ const Cart = () => {
   }, [f])
 
   const del = (cid) => {
-    axios.delete(`http://localhost:5000/del/${cid}`).then(() => {
+    axios.delete(`${API}/del/${cid}`).then(() => {
       setF(!f)
     })
   }
 
   const dec = (cid, qty) => {
     if (qty > 1) {
-      axios.get(`http://localhost:5000/dec/${cid}`).then(() => {
+      axios.get(`${API}/dec/${cid}`).then(() => {
         setF(!f)
       })
     } else {
@@ -46,7 +46,7 @@ const Cart = () => {
   }
 
   const inc = (cid) => {
-    axios.get(`http://localhost:5000/inc/${cid}`).then(() => {
+    axios.get(`${API}/inc/${cid}`).then(() => {
       setF(!f)
     })
   }
@@ -69,7 +69,7 @@ const Cart = () => {
           <div className="col-md-4" key={p._id}>
             <div className="card shadow-sm h-100">
               <img
-                src={`http://localhost:5000/pic/${p.pimg}`}
+                src={`${API}/pic/${p.pimg}`}
                 className="card-img-top"
                 style={{ height: "200px", objectFit: "cover" }}
                 alt={p.name}

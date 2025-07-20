@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-
+const API = "https://ecommerce-production-b6e8.up.railway.app"
 
 const Updpwd = () => {
     let [data,setData]=useState({"pwd":"","otp":""})
@@ -12,7 +12,7 @@ const Updpwd = () => {
 
     }
     let resetpwd=()=>{
-        axios.post("http://localhost:5000/resetpwd",{...data,"uid":uid}).then((res)=>{
+        axios.post(`${API}/resetpwd`,{...data,"uid":uid}).then((res)=>{
             navigate("/login")
         })
     }

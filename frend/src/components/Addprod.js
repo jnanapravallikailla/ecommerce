@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import Cookies from "js-cookie"
 import axios from 'axios'
 import Ct from './Ct'
-
+const API = "https://ecommerce-production-b6e8.up.railway.app"
 const Addprod = () => {
   const [msg, setMsg] = useState("")
   const [uid, setUid] = useState("")
@@ -45,7 +45,7 @@ const Addprod = () => {
     }
     fd.append("rid", uid)
 
-    axios.post("http://localhost:5000/addprod", fd, {
+    axios.post(`${API}`, fd, {
       headers: {
         "Authorization": obj.state.token,
         "uid": obj.state.uid

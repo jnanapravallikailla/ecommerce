@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import Cookies from 'js-cookie'
 import { useNavigate } from "react-router-dom"
-
+const API = "https://ecommerce-production-b6e8.up.railway.app"
 const Edit = () => {
   const [data, setData] = useState({ _id: "", name: "", desc: "", cat: "", price: "" })
   const [file, setFile] = useState("")
@@ -27,7 +27,7 @@ const Edit = () => {
   }
 
   const upd = () => {
-    axios.put("http://localhost:5000/upd", data).then(() => {
+    axios.put(`${API}/upd`, data).then(() => {
       setData({ name: "", desc: "", cat: "", price: "" })
       navigate("/retailer")
     })
@@ -38,7 +38,7 @@ const Edit = () => {
     fd.append("_id", data._id)
     fd.append("pimg", file)
 
-    axios.post("http://localhost:5000/updimg", fd).then((res) => {
+    axios.post(`${API}/updimg`, fd).then((res) => {
       setMsg(res.data.msg)
       navigate("/retailer")
     })

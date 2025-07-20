@@ -17,6 +17,8 @@ import Retailer from "./components/Retailer"
 import Edit from "./components/Edit"
 import Resetpwd from "./components/Resetpwd"
 import Updpwd from "./components/Updpwd"
+const API = "https://ecommerce-production-b6e8.up.railway.app"; // your Railway backend URL
+
 const App = () => {
   let [state,setstate]=useState({"token":"","name":"","uid":"","role":""})
   let stateupd=(sobj)=>{

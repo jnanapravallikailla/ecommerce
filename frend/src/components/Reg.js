@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-
+const API = "https://ecommerce-production-b6e8.up.railway.app"
 const Reg = () => {
   const navigate = useNavigate()
   const [data, setData] = useState({ "_id": "", "name": "", "pwd": "", "role": "" })
@@ -13,7 +13,7 @@ const Reg = () => {
   }
 
   const reg = () => {
-    axios.post("http://localhost:5000/reg", data).then((res) => {
+    axios.post(`${API}/reg`, data).then((res) => {
       setmsg(res.data.msg)
       setData({ "_id": "", "name": "", "pwd": "", "role": "" })
       navigate("/login")

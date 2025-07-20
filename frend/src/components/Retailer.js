@@ -2,7 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Cookies from 'js-cookie'
-
+const API = "https://ecommerce-production-b6e8.up.railway.app"
 const Retailer = () => {
   const [prod, setProd] = useState([])
   const [f, setF] = useState(false)
@@ -14,7 +14,7 @@ const Retailer = () => {
       navigate("/login")
     } else {
       x = JSON.parse(x)
-      axios.get(`http://localhost:5000/getrt/${x.uid}`).then((res) => {
+      axios.get(`${API}/getrt/${x.uid}`).then((res) => {
         setProd(res.data)
       })
     }
@@ -26,7 +26,7 @@ const Retailer = () => {
   }
 
   const del = (pid) => {
-    axios.delete(`http://localhost:5000/delprod/${pid}`).then(() => {
+    axios.delete(`${API}/delprod/${pid}`).then(() => {
       setF(!f)
     })
   }
@@ -39,7 +39,7 @@ const Retailer = () => {
           <div className="col-md-4" key={index}>
             <div className="card h-100 shadow-sm">
               <img
-  src={`http://localhost:5000/pic/${pobj.pimg}`}
+  src={`${API}/pic/${pobj.pimg}`}
   alt={pobj.name}
   className="card-img-top img-fluid rounded-top"
   style={{ height: '240px', objectFit: 'cover', borderBottom: '1px solid #dee2e6' }}

@@ -3,7 +3,7 @@ import { useContext, useState } from "react"
 import Cookies from 'js-cookie'
 import { Link, useNavigate } from "react-router-dom"
 import Ct from "./Ct"
-
+const API = "https://ecommerce-production-b6e8.up.railway.app"
 
 const Login = () => {
   const [data, setData] = useState({ "_id": "", "pwd": "" })
@@ -16,7 +16,7 @@ const Login = () => {
   }
 
   const log = () => {
-    axios.post("http://localhost:5000/login", data).then((res) => {
+    axios.post(`${API}/login`, data).then((res) => {
       if (res.data.token !== undefined) {
         Cookies.set("lc", JSON.stringify(res.data), { expires: 1 })
         obj.stateupd(res.data)

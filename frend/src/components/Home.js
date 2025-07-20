@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Ct from "./Ct";
 import Carousel from "./Carousel";
-
+const API = "https://ecommerce-production-b6e8.up.railway.app"
 
 const Home = () => {
   const [prod, setProd] = useState([]);
@@ -13,7 +13,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/get").then((res) => {
+    axios.get(`${API}/get`).then((res) => {
       setProd(res.data);
     });
   }, []);
@@ -23,7 +23,7 @@ const Home = () => {
       navigate("/login");
     } else {
       axios
-        .post("http://localhost:5000/addcart", {
+        .post(`${API}/addcart`, {
           uid: obj.state.uid,
           pid: p._id,
           name: p.name,
@@ -48,7 +48,7 @@ const Home = () => {
 
   const search = (e) => {
     axios
-      .post("http://localhost:5000/search", { search: e.target.value })
+      .post(`${API}/search`, { search: e.target.value })
       .then((res) => {
         setProd(res.data);
       });
@@ -81,7 +81,7 @@ const Home = () => {
       <div className="card h-100 shadow-sm border-0">
         <div className="d-flex justify-content-center align-items-center" style={{ height: "220px", backgroundColor: "#f8f9fa" }}>
           <img
-            src={`http://localhost:5000/pic/${p.pimg}`}
+            src={`${API}/pic/${p.pimg}`}
             alt={p.name}
             style={{ maxHeight: "200px", objectFit: "contain" }}
             className="img-fluid p-2"

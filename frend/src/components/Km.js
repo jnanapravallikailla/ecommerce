@@ -5,7 +5,7 @@ import axios from 'axios'
 import Rating from '@mui/material/Rating'
 import StarIcon from '@mui/icons-material/Star'
 
-
+const API = "https://ecommerce-production-b6e8.up.railway.app"
 const Km = () => {
   const { pid } = useParams()
   const [prod, setProd] = useState("")
@@ -16,13 +16,13 @@ const Km = () => {
   const obj = useContext(Ct)
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/getbyid/${pid}`).then((res) => {
+    axios.get(`${API}/getbyid/${pid}`).then((res) => {
       setProd(res.data)
     })
   }, [f])
 
   const add = () => {
-    axios.put("http://localhost:5000/addcomm", {
+    axios.put(`${API}/addcomm`, {
       pid: pid,
       name: obj.state.name,
       text: ipt.current.value,
@@ -42,7 +42,7 @@ const Km = () => {
           <div className="row g-4">
             <div className="col-md-6">
               <img
-                src={`http://localhost:5000/pic/${prod.pimg}`}
+                src={`${API}/pic/${prod.pimg}`}
                 alt={prod.name}
                 className="img-fluid rounded shadow-sm classy-img"
               />
